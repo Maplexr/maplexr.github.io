@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>辛瑞（v-max）· 数字分身</title>
+    <meta name="description" content="辛瑞（v-max）的个人主页——27届美术生、AI 自媒体创作者的数字分身，支持中英文切换、多主题换肤、语音对话与聊天记录导出。" />
+    <script>
+      // 防主题闪烁：渲染前应用已保存的主题偏好
+      try {
+        var t = localStorage.getItem('xr-theme');
+        if (t && t !== 'ink') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,331 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 设计系统：Dark —— 暗底克制排版
+   主底 #0B0F19 / 卡片 #0F172A / 主文 #E5E7EB / 次文 #9CA3AF / 1px 边框 #1F2937
+   近零阴影、无装饰描边，层级只靠字号字重与间距 */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://resource-static.bj.bcebos.com/fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* 深蓝黑基底 / 近白主文 */
+    --background: 222 40% 7%;
+    --foreground: 220 14% 90%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 220 14% 90%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 220 14% 90%;
+
+    /* 信号色：暗环境下清晰但不刺眼的青蓝 */
+    --primary: 199 89% 36.5%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 220 14% 90%;
+
+    --muted: 217 33% 15%;
+    --muted-foreground: 218 11% 65%;
+
+    --accent: 199 60% 22%;
+    --accent-foreground: 199 89% 82%;
+
+    --destructive: 0 63% 52%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* 1px 低对比边框，替代阴影承担分隔 */
+    --border: 215 28% 17%;
+    --input: 215 28% 20%;
+    --ring: 199 89% 60%;
+
+    --chart-1: 199 89% 60%;
+    --chart-2: 218 11% 65%;
+    --chart-3: 160 50% 52%;
+    --chart-4: 262 60% 68%;
+    --chart-5: 30 70% 60%;
+
+    --sidebar-background: 222 45% 6%;
+    --sidebar-foreground: 220 14% 90%;
+    --sidebar-primary: 199 89% 60%;
+    --sidebar-primary-foreground: 222 47% 9%;
+    --sidebar-accent: 217 33% 14%;
+    --sidebar-accent-foreground: 220 14% 90%;
+    --sidebar-border: 215 28% 15%;
+    --sidebar-ring: 199 89% 60%;
+  }
+
+  /* 主题本身即暗色，.dark 保持同值作兼容层 */
+  .dark {
+    --radius: 0.5rem;
+    --background: 222 40% 7%;
+    --foreground: 220 14% 90%;
+    --card: 222 47% 11%;
+    --card-foreground: 220 14% 90%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 220 14% 90%;
+    --primary: 199 89% 36.5%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 220 14% 90%;
+    --muted: 217 33% 15%;
+    --muted-foreground: 218 11% 65%;
+    --accent: 199 60% 22%;
+    --accent-foreground: 199 89% 82%;
+    --destructive: 0 63% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 28% 17%;
+    --input: 215 28% 20%;
+    --ring: 199 89% 60%;
+  }
+}
+
+/* ===== 主题皮肤 =====
+   html[data-theme] 定义在 @layer 之外（未分层样式优先），覆盖 :root 默认墨夜主题 */
+
+/* 初雪（浅色极简） */
+html[data-theme='snow'] {
+  --background: 220 30% 97%;
+  --foreground: 222 32% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 32% 14%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 32% 14%;
+  --primary: 199 85% 30%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 24% 93%;
+  --secondary-foreground: 222 28% 22%;
+  --muted: 217 24% 94%;
+  --muted-foreground: 218 12% 42%;
+  --accent: 199 55% 92%;
+  --accent-foreground: 199 85% 22%;
+  --destructive: 0 68% 46%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 215 20% 87%;
+  --input: 215 20% 83%;
+  --ring: 199 85% 34%;
+  --chart-1: 199 85% 34%;
+  --chart-2: 218 12% 45%;
+  --chart-3: 160 60% 34%;
+  --chart-4: 262 60% 55%;
+  --chart-5: 30 75% 45%;
+  --sidebar-background: 220 30% 97%;
+  --sidebar-foreground: 222 32% 14%;
+  --sidebar-primary: 199 85% 30%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 217 24% 93%;
+  --sidebar-accent-foreground: 222 28% 22%;
+  --sidebar-border: 215 20% 88%;
+  --sidebar-ring: 199 85% 34%;
+}
+
+/* 紫韵（暗紫） */
+html[data-theme='violet'] {
+  --background: 252 30% 8%;
+  --foreground: 250 20% 92%;
+  --card: 252 28% 12%;
+  --card-foreground: 250 20% 92%;
+  --popover: 252 28% 12%;
+  --popover-foreground: 250 20% 92%;
+  --primary: 258 85% 66%;
+  --primary-foreground: 250 45% 10%;
+  --secondary: 250 25% 18%;
+  --secondary-foreground: 250 20% 92%;
+  --muted: 250 25% 16%;
+  --muted-foreground: 248 12% 68%;
+  --accent: 258 60% 24%;
+  --accent-foreground: 258 90% 84%;
+  --destructive: 0 63% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 250 22% 20%;
+  --input: 250 22% 24%;
+  --ring: 258 85% 70%;
+  --chart-1: 258 85% 70%;
+  --chart-2: 248 12% 68%;
+  --chart-3: 199 80% 60%;
+  --chart-4: 30 80% 60%;
+  --chart-5: 340 70% 62%;
+  --sidebar-background: 252 32% 7%;
+  --sidebar-foreground: 250 20% 92%;
+  --sidebar-primary: 258 85% 70%;
+  --sidebar-primary-foreground: 252 40% 10%;
+  --sidebar-accent: 250 25% 15%;
+  --sidebar-accent-foreground: 250 20% 92%;
+  --sidebar-border: 250 22% 18%;
+  --sidebar-ring: 258 85% 70%;
+}
+
+/* 暮金（暗暖琥珀） */
+html[data-theme='amber'] {
+  --background: 30 12% 8%;
+  --foreground: 35 15% 92%;
+  --card: 30 14% 12%;
+  --card-foreground: 35 15% 92%;
+  --popover: 30 14% 12%;
+  --popover-foreground: 35 15% 92%;
+  --primary: 38 92% 50%;
+  --primary-foreground: 30 40% 10%;
+  --secondary: 30 10% 18%;
+  --secondary-foreground: 35 12% 90%;
+  --muted: 30 10% 16%;
+  --muted-foreground: 35 8% 66%;
+  --accent: 38 70% 22%;
+  --accent-foreground: 38 95% 80%;
+  --destructive: 0 63% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 30 12% 20%;
+  --input: 30 12% 24%;
+  --ring: 38 92% 55%;
+  --chart-1: 38 92% 55%;
+  --chart-2: 35 8% 66%;
+  --chart-3: 160 50% 50%;
+  --chart-4: 199 80% 55%;
+  --chart-5: 340 65% 60%;
+  --sidebar-background: 30 14% 7%;
+  --sidebar-foreground: 35 15% 92%;
+  --sidebar-primary: 38 92% 55%;
+  --sidebar-primary-foreground: 30 40% 10%;
+  --sidebar-accent: 30 10% 15%;
+  --sidebar-accent-foreground: 35 12% 90%;
+  --sidebar-border: 30 12% 18%;
+  --sidebar-ring: 38 92% 55%;
+}
+
+/* 青屿（浅色青绿） */
+html[data-theme='forest'] {
+  --background: 150 18% 96%;
+  --foreground: 160 25% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 160 25% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 160 25% 12%;
+  --primary: 160 84% 26%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 155 15% 92%;
+  --secondary-foreground: 160 22% 18%;
+  --muted: 155 15% 93%;
+  --muted-foreground: 158 10% 40%;
+  --accent: 160 50% 90%;
+  --accent-foreground: 160 85% 18%;
+  --destructive: 0 68% 46%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 152 14% 86%;
+  --input: 152 14% 82%;
+  --ring: 160 84% 30%;
+  --chart-1: 160 84% 30%;
+  --chart-2: 158 10% 42%;
+  --chart-3: 199 85% 34%;
+  --chart-4: 38 85% 42%;
+  --chart-5: 262 60% 55%;
+  --sidebar-background: 150 18% 96%;
+  --sidebar-foreground: 160 25% 12%;
+  --sidebar-primary: 160 84% 26%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 155 15% 92%;
+  --sidebar-accent-foreground: 160 22% 18%;
+  --sidebar-border: 152 14% 87%;
+  --sidebar-ring: 160 84% 30%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  html {
+    @apply bg-background;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer components {
+  /* 核心视觉签名：仅靠 1px 低对比边框分隔的无阴影面板 */
+  .calm-panel {
+    @apply bg-card border border-border;
+    box-shadow: none;
+  }
+
+  /* 极细分隔线，用于模块之间的呼吸留白边界 */
+  .calm-divider {
+    height: 1px;
+    background: hsl(var(--border));
+  }
+
+  /* 当前状态指示：短竖条信号色，替代大色块 */
+  .calm-indicator {
+    border-left: 2px solid hsl(var(--primary));
+    padding-left: 0.75rem;
+  }
+
+  /* 弱化主按钮：强调文字与信号色描边，不用实心大色块 */
+  .calm-action {
+    @apply border border-input bg-transparent text-foreground;
+    transition: color 160ms ease-out, border-color 160ms ease-out;
+  }
+  .calm-action:hover {
+    color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+  }
+
+  /* 线性图表描边：统一线宽、无填充 */
+  .calm-line-chart path,
+  .calm-line-chart line,
+  .calm-line-chart polyline {
+    fill: none;
+    stroke: hsl(var(--primary));
+    stroke-width: 1.5;
+  }
+
+  /* 入场：沿栅格方向的淡入微移，ease-out，无弹性 */
+  .calm-enter {
+    animation: calm-enter 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes calm-enter {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 内容加载：纯淡入 */
+  .calm-fade {
+    animation: calm-fade 320ms ease-out both;
+  }
+
+  @keyframes calm-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .calm-enter,
+    .calm-fade { animation: none; }
+    .calm-action { transition: none; }
+  }
+}
